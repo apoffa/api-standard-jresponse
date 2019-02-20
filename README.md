@@ -12,10 +12,10 @@ npm i api-standard-jresponse
 ## Standard Response
 ```json
 {
-    "success": true, // or false
-    "count": 0, // length of the data array
-    "data": [], // array of data
-    "errors": [] // array of errors
+    "success": true,
+    "count": 0,
+    "data": [],
+    "errors": []
 }
 ```
 - `"success"` can be **true** or **false**
