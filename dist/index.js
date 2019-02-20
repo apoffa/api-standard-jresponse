@@ -73,8 +73,10 @@ var JResponse = /** @class */ (function () {
         }
         return this.res.status(this.status).json(this.response);
     };
-    JResponse.prototype.sendSuccess = function (data) {
+    JResponse.prototype.sendSuccess = function (data, status) {
         if (data === void 0) { data = null; }
+        if (status === void 0) { status = 200; }
+        this.status = status;
         if (data !== null) {
             Array.isArray(data) ? this.response.data = this.response.data.concat(data) : this.response.data.push(data);
         }

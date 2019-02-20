@@ -71,7 +71,8 @@ export class JResponse {
         return this.res.status(this.status).json(this.response);
     }
 
-    sendSuccess(data: any = null) {
+    sendSuccess(data: any = null, status = 200) {
+        this.status = status;
         if (data !== null) {
             Array.isArray(data) ? this.response.data = this.response.data.concat(data) : this.response.data.push(data);
         }
