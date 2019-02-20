@@ -1,6 +1,8 @@
 # API Standard JResponse
 This library aim to standardize the JSON responses of your REST API application. 
 Make your font-end developer life easier. 
+
+This project is derived from 'jresponse-node' ( https://www.npmjs.com/package/jresponse-node ) but is written in typescript and compiled 
 ## Installation
 ```
 npm i api-standard-jresponse
