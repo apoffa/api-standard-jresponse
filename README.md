@@ -18,11 +18,16 @@ npm i api-standard-jresponse
     "errors": [] // array of errors
 }
 ```
+- `"success"` can be **true** or **false**
+- `"count"` length of the data array
+- `"data"` array of data
+- `"errors"` array of errors
+
 ***Notice:*** "data" and "error" fields are always array. This makes the communication easier because the client 
 knows that regardless of the type of received data, he will always get an array at that point.  
 
-## Usages
-### Basic usage (Static function)
+## Usage
+### Basic usage (static function)
 methods:
 - `JResponse.success(response_obj, data, [,status]);` If not specified, default status is ***200***. Data can be number/string/object or even an array of values. 
 - `JResponse.errors(response_obj, errors, [,status]);` If not specified, default status is ***400***. Errors ca be number/string/object or even an array of values.
@@ -58,30 +63,33 @@ success methods:
 
 error methods:
 - `res.JRes.appendError(error, [,status]);` ***This method does not print any error.*** Just append the error to the payload. [error] can be number/string/object or even an array of values.
-- `res.JRes.sendErrors([,error], [,status]);` ***This method print errors.*** [error] can be number/string/object or even an array of values. Prints the entire payload of error previously added merged with the one passed to this function.
+- `res.JRes.sendErrors([,error], [,status]);` ***This method print errors.*** [error] can be number/string/object or even an array of values. Prints the entire payload of error previously added merged with the one passed to this function (if passed).
 
 example:
 ```javascript
  app.get("/people/list", (req, res) => {
      try {
-         // Do your staffs
+         // append object
          res.JRes.appendData( 
                      { 
                         "first_name": "John",      
                         "last_name": "Doe"      
                      } 
                  );
-         // Do other staffs
-         res.JRes.appendData( 
-                     {
-                        "first_name": "Floyd",      
-                        "last_name": "Earls"      
-                     } 
-                  );
          
+         // append string
+         res.JRes.appendData("Floyd Earls");
+        
+         // if you append an array, it will be concat with the existing data (see response)
+         res.JRes.appendData(
+                [
+                    "Taylor Tejada", 
+                    "Thomas Patterson"
+                ]
+             );
          
          return res.JRes.sendSuccess();
-         // or return res.JRes.sendSuccess({"first_name": "Nelson", "last_name": "Pate"});
+         // or return res.JRes.sendSuccess("1");
      } catch (e) {
          res.JRes.appendError(getMessage(e));
          res.JRes.appendError(getJsonTrace(e));
@@ -107,13 +115,10 @@ function getJsonTrace(e) {
       {
         "first_name": "John",      
         "last_name": "Doe"      
-      },{
-        "first_name": "Floyd",      
-        "last_name": "Earls"      
-      },{
-        "first_name": "Nelson",      
-        "last_name": "Pate"      
-      }
+      },
+      "floyd Earls",
+      "Taylor Tejada",
+      "Thomas Patterson"
     ],
     "errors": []
 }
