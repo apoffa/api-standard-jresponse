@@ -1,10 +1,6 @@
 # API Standard JResponse
 This library aim to standardize the JSON responses of your REST API application. 
-Make your font-end developer life easier.
-
-## Requirements
- - NodeJS8 (or above)
- 
+Make your font-end developer life easier. 
 ## Installation
 ```
 npm i api-standard-jresponse
