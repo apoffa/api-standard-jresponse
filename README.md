@@ -19,8 +19,7 @@ npm i api-standard-jresponse
 - `"data"` array of data
 - `"errors"` array of errors
 
-***Notice:*** "data" and "error" fields are always array. This makes the communication easier because the client 
-knows that regardless of the type of received data, he will always get an array at that point.  
+***Notice:*** "data" and "error" fields are always array. This makes the communication easier. 
 
 ## Usage
 ### Basic usage (static function)
