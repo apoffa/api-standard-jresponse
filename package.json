@@ -1,0 +1,23 @@
+{
+  "name": "api-standard-jresponse",
+  "version": "1.0.0",
+  "description": "This library aim to standardize the JSON responses of your REST API application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JSON",
+    "Response",
+    "Standard",
+    "response",
+    "typescript",
+    "json",
+    "response",
+    "REST",
+    "API",
+    "response"
+  ],
+  "author": "Alessandro Poffa",
+  "license": "ISC"
+}
