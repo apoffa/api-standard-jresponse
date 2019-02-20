@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setJResponse = function (req, res, next) {
-    console.log("arrive here");
     res.JRes = new JResponse(res);
     return next();
 };

@@ -1,5 +1,4 @@
 export const setJResponse = (req: any, res: any, next: any) => {
-    console.log("arrive here");
     res.JRes = new JResponse(res);
     return next();
 };
