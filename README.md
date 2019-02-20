@@ -43,7 +43,7 @@ app.get("/introduce/yourself", (req, res) => {
 ### Dynamic usage
 This allow you to dynamically append data or error during the execution of the code.
 
-Firs of all, add the response setter middleware (before declaring any routes).
+First of all, add the response middleware (before declaring any routes).
 ```javascript
 import { setJResponse } from "api-standard-jresponse";
 
@@ -53,12 +53,12 @@ This middleware attach to the response object an instance of the class.
 Now, just use the custom property ***res.JRes ...*** instead of ***res.json***
 
 success methods:
-- `res.JRes.appendData(data, [,status]);` ***This method does not print anything.*** Just append data to the payload. [data] will be sent by the following method.
-- `res.JRes.sendSuccess([,data], [,status]);` ***This method print data.*** [data] can be number/string/object or even an array of values. Prints the entire payload of previously added data, merged with the one passed to this function (if passed). 
+- `res.JRes.appendData(data, [,status]);` ***This method does not print anything.*** It append data to the payload. [data] will be sent by the following method.
+- `res.JRes.sendSuccess([,data], [,status]);` ***This method print data.*** [data] Can be number/string/object or even an array of values. Prints the entire payload of previously added data, merged with the one passed to this function (if passed). 
 
 error methods:
-- `res.JRes.appendError(error, [,status]);` ***This method does not print any error.*** Just append the error to the payload. [error] can be number/string/object or even an array of values.
-- `res.JRes.sendErrors([,error], [,status]);` ***This method print errors.*** [error] can be number/string/object or even an array of values. Prints the entire payload of error previously added merged with the one passed to this function (if passed).
+- `res.JRes.appendError(error, [,status]);` ***This method does not print any error.*** It append the error to the payload. [error] can be number/string/object or even an array of values.
+- `res.JRes.sendErrors([,error], [,status]);` ***This method print errors.*** [error] Can be number/string/object or even an array of values. Prints the entire payload of error previously added merged with the one passed to this function (if passed).
 
 example:
 ```javascript
@@ -84,7 +84,7 @@ example:
              );
          
          return res.JRes.sendSuccess();
-         // or return res.JRes.sendSuccess("1");
+         // or return res.JRes.sendSuccess(whatever_you_want);
      } catch (e) {
          res.JRes.appendError(getMessage(e));
          res.JRes.appendError(getJsonTrace(e));
