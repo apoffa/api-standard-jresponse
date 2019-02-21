@@ -35,11 +35,11 @@ var JResponse = /** @class */ (function () {
             throw new Error("'error' field must be Array (if set)");
         }
         var response = { success: true, count: 0, data: [], errors: [] };
-        if ((Array.isArray(errors) && errors.length > 0) || errors !== null) {
+        if ((Array.isArray(errors) && errors.length > 0) || (!Array.isArray(errors) && errors !== null)) {
             response.success = false;
             response.errors = errors;
         }
-        if ((Array.isArray(data) && data.length > 0) || data !== null) {
+        if ((Array.isArray(data) && data.length > 0) || (!Array.isArray(data) && data !== null)) {
             response.data = data;
             response.count = response.data.length;
         }
