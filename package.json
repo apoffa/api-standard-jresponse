@@ -1,7 +1,7 @@
 {
   "name": "api-standard-jresponse",
-  "version": "1.0.4",
-  "description": "This library aim to standardize the JSON responses of your REST API application.",
+  "version": "1.0.5",
+  "description": "Node JS library that aim to standardize the JSON responses of your REST API application.",
   "main": "dist/index.js",
   "types" : "dist/index.d.ts",
   "scripts": {
@@ -13,6 +13,7 @@
     "url": "git+https://github.com/apoffa/api-standard-jresponse.git"
    },
   "keywords": [
+    "Node",
     "JSON",
     "Response",
     "API",
