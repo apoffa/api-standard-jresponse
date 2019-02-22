@@ -107,6 +107,24 @@ var JResponse = /** @class */ (function () {
             Array.isArray(data) ? this.response.data = this.response.data.concat(data) : this.response.data.push(data);
         }
     };
+    JResponse.prototype.merge = function (list) {
+        list = (list === null) ? [] : list;
+        list = !Array.isArray(list) ? [list] : list;
+        if (list.length == 0)
+            return false;
+        for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+            var item = list_1[_i];
+            for (var key in item) {
+                if (item.hasOwnProperty(key)) {
+                    this.set(key, item[key]);
+                }
+            }
+        }
+    };
+    JResponse.prototype.set = function (key, value) {
+        this.response[key] = value;
+        return true;
+    };
     return JResponse;
 }());
 exports.JResponse = JResponse;

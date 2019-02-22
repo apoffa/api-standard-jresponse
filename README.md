@@ -62,6 +62,7 @@ error methods:
 - `res.JRes.appendError(error, [,status]);` ***This method does not print any error.*** It append the error to the payload. [error] can be number/string/object or even an array of values.
 - `res.JRes.sendErrors([,error], [,status]);` ***This method print errors.*** [error] Can be number/string/object or even an array of values. Prints the entire payload of error previously added merged with the one passed to this function (if passed).
 
+
 example:
 ```javascript
  app.get("/people/list", (req, res) => {
@@ -103,7 +104,58 @@ function getJsonTrace(e) {
     return trace_obj;
 }
 ```
-## Success Response
+
+edit response object shape:
+- `res.JRes.merge(data);` ***This method does not print anything.*** It merge the default response to the object [data] (or array of object) that you pass.
+- `res.JRes.set(key, value);` ***This method does not print anything.*** It add a key/value pair to the default object.
+
+example:
+
+```javascript
+
+app.get("/get/rows", (req, res) => {
+    try {
+        // Do your staff
+        let data = [
+            {
+                first_name: "john",
+                last_name: "Doe"
+            }
+        ]
+        let counters = {
+            page: 2,
+            step: 100
+        }
+        res.JRes.merge(counters);
+        res.JRes.set("addon", "addon_value");
+        return res.JRes.sendSuccess(data);
+    } catch (e) {
+        return res.JRes.sendErrors(e.message);  
+    }
+});
+
+```
+result:
+```json
+{
+    "success": true,
+    "count": 4,
+    "data": [
+      {
+        "first_name": "John",      
+        "last_name": "Doe"      
+      }
+    ],
+    "errors": [],
+    "page": 2,
+    "step": 100,
+    "addon": "addon_value"
+}
+```
+
+
+
+## Standard Success Response
 ```json
 {
     "success": true,
@@ -140,7 +192,7 @@ or even
     "errors": []
 }
 ```
-## Error Response
+## Standard Error Response
 ```json
 {
     "success": false,

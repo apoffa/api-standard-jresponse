@@ -100,4 +100,22 @@ export class JResponse {
             Array.isArray(data) ? this.response.data = this.response.data.concat(data) : this.response.data.push(data);
         }
     }
+
+    merge (list: any) {
+        list = (list === null) ? [] : list;
+        list = !Array.isArray(list) ? [list]: list;
+        if (list.length == 0) return false;
+        for (const item of list) {
+            for (const key in item) {
+                if (item.hasOwnProperty(key)) {
+                    this.set(key, item[key])
+                }
+            }
+        }
+    }
+
+    set (key: string, value: any) {
+        this.response[key] = value;
+        return true
+    }
 }

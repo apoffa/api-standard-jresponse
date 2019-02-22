@@ -12,4 +12,6 @@ export declare class JResponse {
     sendErrors(errors?: any, status?: number): any;
     appendError(error?: any, status?: number): void;
     appendData(data?: any, status?: number): void;
+    merge(list: any): false | undefined;
+    set(key: string, value: any): boolean;
 }
